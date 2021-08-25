@@ -103,8 +103,15 @@ class ViewController: UIViewController {
     
     @IBAction func sliderMoved(_ slider: UISlider)
     { currentValue = lroundf(slider.value)
+    
     }
        @IBAction func startNewGame() {
+        let transition = CATransition()
+        transition.type = CATransitionType.fade
+        transition.duration = 1
+        transition.timingFunction = CAMediaTimingFunction(
+            name: CAMediaTimingFunctionName.easeOut)
+        view.layer.add(transition, forKey: nil)
         score = 0
         round = 0
         startNewRound()
@@ -116,5 +123,9 @@ class ViewController: UIViewController {
                 slider.value = Float(currentValue)
                 updateLabels()
             }
+    @IBAction func buttonClicked(_ sender: UIButton) {
+      print("You finished!")
+    }
+    
     }
     
